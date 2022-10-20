@@ -2,6 +2,7 @@ package com.themoviedbmovieapps.Services.Repository;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -22,7 +23,7 @@ public class MovieRepository {
     private static Context mContext;
     private MovieModel movieModel;
     private List<Result> mResult;
-    private MutableLiveData mutableLiveData;
+    private MutableLiveData mLiveData;
 
 
     @SuppressLint("StaticFieldLeak")
@@ -37,7 +38,8 @@ public class MovieRepository {
 
 
     public MutableLiveData<List<Result>> getTopRatedMovieList(){
-        if (mutableLiveData==null){mutableLiveData= new MutableLiveData();}
+        if (mLiveData ==null){
+            mLiveData = new MutableLiveData();}
 
         ApiServices apiServices = RetrofitInstance.getRetrofitInstance().create(ApiServices.class);
         Call<MovieModel> call= apiServices.getTopRatedMovieList();
@@ -47,7 +49,8 @@ public class MovieRepository {
                 movieModel= response.body();
                 assert movieModel != null;
                 mResult= movieModel.getResults();
-                mutableLiveData.postValue(mResult);
+                mLiveData.postValue(mResult);
+                Log.d("TAG", "onResponse: "+response.body());
             }
 
             @Override
@@ -55,6 +58,6 @@ public class MovieRepository {
 
             }
         });
-        return mutableLiveData;
+        return mLiveData;
     }
 }

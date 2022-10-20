@@ -17,12 +17,10 @@ public class MovieListViewModel extends AndroidViewModel {
 
     public MovieListViewModel(@NonNull Application application) {
         super(application);
-
         mMovieRepository= MovieRepository.getInstance(application);
     }
 
-
-    public LiveData<List<Result>> getTopRatedMovieLists(){
+    public MutableLiveData<List<Result>> getTopRatedMovieLists(){
         return mMovieRepository.getTopRatedMovieList();
     }
 }
