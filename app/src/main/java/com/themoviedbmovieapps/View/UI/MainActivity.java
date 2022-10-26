@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         recyclerView= binding.recyclerviewId;
-//        GridLayoutManager layoutManager= new GridLayoutManager(this,2);
         LinearLayoutManager layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 

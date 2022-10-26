@@ -39,7 +39,7 @@ public class TopMovieListAdapter extends RecyclerView.Adapter<TopMovieListAdapte
         holder.rating.setText(mResultList.get(position).getVoteAverage().toString()+"");
         holder.release.setText(mResultList.get(position).getReleaseDate());
         String address= "https://api.themoviedb.org/3/movie/"+mResultList.get(position).getId()+mResultList.get(position).getPosterPath()+"?api_key=ac5f083985e059dd57bfcca6d052f746&language=en-US";
-        Glide.with(context).load(address).into(holder.imageView);
+        Glide.with(context).load(address).placeholder(R.drawable.ic_launcher_background).into(holder.imageView);
     }
 
     @Override
