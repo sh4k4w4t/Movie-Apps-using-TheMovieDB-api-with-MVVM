@@ -3,6 +3,7 @@ package com.themoviedbmovieapps.Services.Repository;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -50,7 +51,7 @@ public class MovieRepository {
                 assert movieModel != null;
                 mResult= movieModel.getResults();
                 mLiveData.postValue(mResult);
-                Log.d("TAG", "onResponse: "+response.body());
+                Toast.makeText(mContext, "Success again", Toast.LENGTH_SHORT).show();
             }
 
             @Override
